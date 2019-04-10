@@ -140,11 +140,3 @@ class SinglyLinkedList {
         return this;
     }
 }
-
-let list = new SinglyLinkedList();
-list.push('hello');
-list.push('goodbye');
-list.push('!');
-list.push('<3');
-list.push(':)');
-
