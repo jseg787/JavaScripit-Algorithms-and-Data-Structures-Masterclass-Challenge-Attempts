@@ -93,6 +93,8 @@ class DoublyLinkedList {
     let count, current;
 
     if (index <= this.length / 2) {
+      // if the index requested is less than half the length,
+      // start searching in the first half of the list
       count = 0;
       current = this.head;
       while (count !== index) {
@@ -100,6 +102,7 @@ class DoublyLinkedList {
         count++;
       }
     } else {
+      // Otherwise start at the end
       count = this.length - 1;
       current = this.tail;
       while (count !== index) {
@@ -109,4 +112,20 @@ class DoublyLinkedList {
     }
     return current;
   }
+
+  set(index, val) {
+    const foundNode = this.get(index);
+    if (foundNode !== null) {
+      foundNode.val = val;
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
+
+const list = new DoublyLinkedList();
+
+list.push("Pepper");
+list.push("Salt");
+list.push("Cumin");
