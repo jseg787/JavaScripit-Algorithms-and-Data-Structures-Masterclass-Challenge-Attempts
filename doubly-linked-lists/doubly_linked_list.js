@@ -122,10 +122,56 @@ class DoublyLinkedList {
       return false;
     }
   }
+
+  insert(index, val) {
+    if (index < 0 || index > this.length) {
+      return false;
+    }
+    if (index === 0) {
+      this.unshift(val);
+      return true;
+    }
+    if (index === this.length) {
+      this.push(val);
+      return true;
+    }
+
+    const node = new Node(val);
+    const prevNode = this.get(index - 1);
+    const nextNode = prevNode.next;
+
+    prevNode.next = node;
+    node.prev = prevNode;
+    nextNode.prev = node;
+    node.next = nextNode;
+    this.length++;
+    return true;
+  }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) {
+      return undefined;
+    }
+    if (index === 0) {
+      return this.shift();
+    }
+    if (index === this.length - 1) {
+      return this.pop();
+    }
+
+    const removedNode = this.get(index);
+
+    removedNode.prev.next = removedNode.next;
+    removedNode.next.prev = removedNode.prev;
+    removedNode.next = null;
+    removedNode.prev = null;
+    this.length--;
+    return removedNode
+  }
 }
 
 const list = new DoublyLinkedList();
 
-list.push("Pepper");
 list.push("Salt");
+list.push("Pepper");
 list.push("Cumin");
