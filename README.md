@@ -1,2 +1,2 @@
-# JavaScript-Algorithms-and-Data-Structures-Masterclass-Challenge-Attempts
-My personal attempts at the challenges for the Udemy course JavaScript Algorithms and Data Structures Masterclass by Colt Steele
+# JavaScript-Algorithms-and-Data-Structures-Masterclass
+code notes for the data structures and algorthims in the course. Also contains some challenge attempts
