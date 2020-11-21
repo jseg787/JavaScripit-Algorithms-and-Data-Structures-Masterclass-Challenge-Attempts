@@ -169,9 +169,3 @@ class DoublyLinkedList {
     return removedNode
   }
 }
-
-const list = new DoublyLinkedList();
-
-list.push("Salt");
-list.push("Pepper");
-list.push("Cumin");
