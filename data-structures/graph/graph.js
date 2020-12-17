@@ -31,7 +31,7 @@ class Graph {
 	 * Traversal
 	 */
 
-	DFSRecursive(vertex) {
+	depthFirstRecursive(vertex) {
 		const results = []; // Keep track of the order
 		const visited = {}; // Keep track of the places we've been
 		const adjacencyList = this.adjacencyList;
@@ -56,7 +56,7 @@ class Graph {
 		return results;
 	}
 
-	DFSIterative(start) {
+	depthFirstIterative(start) {
 		const stack = [ start ];
 		const result = [];
 		const visited = {};
@@ -72,6 +72,27 @@ class Graph {
 				if (!visited[neighbor]) {
 					visited[neighbor] = true;
 					stack.push(neighbor);
+				}
+			});
+		}
+
+		return result;
+	}
+
+	breadthFirst(start) {
+		const queue = [ start ];
+		const result = [];
+		const visited = {};
+
+		visited[start] = true;
+
+		while (queue.length) {
+			let currentVertex = queue.shift();
+			result.push(currentVertex);
+			this.adjacencyList[currentVertex].forEach((neighbor) => {
+				if (!visited[neighbor]) {
+					queue.push(neighbor);
+					visited[neighbor] = true;
 				}
 			});
 		}
@@ -96,6 +117,3 @@ g.addEdge('C', 'E');
 g.addEdge('D', 'E');
 g.addEdge('D', 'F');
 g.addEdge('E', 'F');
-
-console.log(g.DFSRecursive('A'));
-console.log(g.DFSIterative('A'));
